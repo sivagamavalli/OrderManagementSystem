@@ -20,6 +20,8 @@ public class Order {
 	private String address;
 	private String orderItem;
 	private BigDecimal total;
+	
+	
 	public Order() {
 		super();
 		

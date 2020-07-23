@@ -12,5 +12,5 @@ public interface OrderItemProxy {
 
 	
 	@RequestMapping(method=RequestMethod.GET,value="/orderitems/{id}")
-	public <OrderItem> OrderItem getOrderItembyProductCode(String productcode);
+	public CustomOrderItemObject getOrderItembyProductCode(String productcode);
 }

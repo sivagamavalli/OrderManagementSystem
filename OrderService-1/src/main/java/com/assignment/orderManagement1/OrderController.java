@@ -1,14 +1,19 @@
 package com.assignment.orderManagement1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.google.common.reflect.TypeToken;
 
 
 
@@ -34,9 +39,18 @@ public class OrderController {
 	}
 	
 	@RequestMapping("/orders/{productcode}")
-	public List<Order> getOrderItemByProductCode(@PathVariable String productcode){
+	public List<Order> getOrderByProductCode(@PathVariable String productcode){
 		//List<OrderItem> result = new ArrayList<OrderItem>();
-		return orderservice.getOrderItemByProductCode(productcode);
+		List <Order> order = new ArrayList<Order>();
+		String orderItem = null;
+//		order=orderservice.getAllOrders();
+//		return orderservice.getOrderItemByProductCode(productcode);
+		CustomOrderItemObject custombean = new CustomOrderItemObject();
+		custombean=orderitemclient.getOrderItembyProductCode(productcode);
+		order=orderservice.getAllOrders();
+        return order;
+	   
+	    
 	}
 	
 	

@@ -26,9 +26,10 @@ public class OrderServiceClass {
 		orderrepository.save(order);
 	}
 	
-	public List<Order> getOrderItemByProductCode(String productcode){
+	public List<Order> getOrderByProductCode(String productcode){
 		List<Order> orders = new ArrayList<>();
-		orderitemproxy.getOrderItembyProductCode(productcode);
+		orderrepository.findByOrderItem(productcode);
+		
 		//orderrepository.findAll().forEach(orders::add);
 		return orders;
 	}
