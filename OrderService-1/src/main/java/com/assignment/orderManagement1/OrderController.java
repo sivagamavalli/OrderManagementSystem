@@ -28,7 +28,7 @@ public class OrderController {
 		return orderservice.getAllOrders();
 	}
 		
-	@RequestMapping(method=RequestMethod.POST, value="/addOrderItem")
+	@RequestMapping(method=RequestMethod.POST, value="/addOrder")
 	public void addOrder(@RequestBody Order order) {
 		orderservice.addorder(order);
 	}
